@@ -1,0 +1,168 @@
+[
+{
+    "model": "polls.question",
+    "pk": 1,
+    "fields": {
+        "question_text": "What's up?",
+        "pub_date": "2019-09-11T10:46:31.443Z"
+    }
+},
+{
+    "model": "polls.question",
+    "pk": 2,
+    "fields": {
+        "question_text": "Sataako huomenna?",
+        "pub_date": "2019-09-11T11:50:30Z"
+    }
+},
+{
+    "model": "polls.question",
+    "pk": 3,
+    "fields": {
+        "question_text": "Mik\u00e4 on \"paras\" ohjelmointikieli?",
+        "pub_date": "2019-09-11T11:55:41Z"
+    }
+},
+{
+    "model": "polls.question",
+    "pk": 4,
+    "fields": {
+        "question_text": "Mik\u00e4 on paras pizza?",
+        "pub_date": "2019-09-12T12:05:44Z"
+    }
+},
+{
+    "model": "polls.question",
+    "pk": 5,
+    "fields": {
+        "question_text": "Mik\u00e4 on paras joululahja?",
+        "pub_date": "2019-09-12T12:08:49Z"
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 1,
+    "fields": {
+        "question": 1,
+        "choice_text": "Not much",
+        "votes": 0
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 2,
+    "fields": {
+        "question": 1,
+        "choice_text": "The sky",
+        "votes": 0
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 4,
+    "fields": {
+        "question": 2,
+        "choice_text": "luultavasti",
+        "votes": 2
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 5,
+    "fields": {
+        "question": 2,
+        "choice_text": "ihan varmasti",
+        "votes": 1
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 6,
+    "fields": {
+        "question": 2,
+        "choice_text": "en m\u00e4 tied\u00e4",
+        "votes": 1
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 7,
+    "fields": {
+        "question": 3,
+        "choice_text": "Pyyttoni",
+        "votes": 0
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 8,
+    "fields": {
+        "question": 3,
+        "choice_text": "Basicci",
+        "votes": 1
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 9,
+    "fields": {
+        "question": 3,
+        "choice_text": "Assembleri",
+        "votes": 0
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 10,
+    "fields": {
+        "question": 4,
+        "choice_text": "mozzarella",
+        "votes": 0
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 11,
+    "fields": {
+        "question": 4,
+        "choice_text": "pepperoni",
+        "votes": 0
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 12,
+    "fields": {
+        "question": 4,
+        "choice_text": "tropicana",
+        "votes": 0
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 13,
+    "fields": {
+        "question": 5,
+        "choice_text": "hyv\u00e4 mieli",
+        "votes": 0
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 14,
+    "fields": {
+        "question": 5,
+        "choice_text": "tukku rahaa",
+        "votes": 0
+    }
+},
+{
+    "model": "polls.choice",
+    "pk": 15,
+    "fields": {
+        "question": 5,
+        "choice_text": "ei mit\u00e4\u00e4n",
+        "votes": 0
+    }
+}
+]

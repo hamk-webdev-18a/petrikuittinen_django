@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> </title>´
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        function addjson() {
+            var word = document.getElementById("word2").value;
+            var definition = document.getElementById("definition2").value;
+            console.log(word+" "+definition);
+            if (word.length > 0 && definition.length > 0) {
+                $.ajax({
+                    url: 'addjson',
+                    data: {
+                        'word': word,
+                        'definition': definition,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'
+                    },
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function(data) {
+                        $("#result2").text(data);
+                    }
+                });
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Add Words (normal synchronous)</h1>
+    <form action="add" method="post">
+        {% csrf_token %}
+        <label for="word">Word:</label>
+        <input type="text" id="word" name="word" size="40" autofocus>
+        <label for="definition">Definition:</label>
+        <input type="text" id="definition" name="definition" size="40">
+        <input type="submit" value="Add word">
+    </form>
+
+    <h1>Add Words (Asynchronous)</h1>
+    <form method="post" id="form2">
+        <label for="word2">Word:</label>
+        <input type="text" id="word2" name="word2" size="40" autofocus>
+        <label for="definition2">Definition:</label>
+        <input type="text" id="definition2" name="definition2" size="40">
+        <input type="button" value="Add word" onclick="addjson()">
+        <br>
+        <output id="result2"></output>
+    </form>
+
+    <p></p><a href="/dictionary/">Search words</a></p>
+</body>
+
+</html>

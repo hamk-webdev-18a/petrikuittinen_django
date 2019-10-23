@@ -1,0 +1,28 @@
+{% load i18n %}
+{% load static %}
+
+<p></p><a href="create/">{% trans "Create a new blog post" %}</a></p>
+
+<h1>Latest Blog Posts</h1>
+{% if latest_blog_entries %}
+    <ul>
+    {% for entry in latest_blog_entries %}
+        <li><h2>{{ entry.headline }}</h2>
+        <p>Published: {{ entry.pub_date }}</p>
+        <p>Modified: {{ entry.mod_date }}</p>
+        <p>Created by:
+        <ul>
+            {% for author in entry.authors.all %}
+            <li>{{ author.name }}</li>
+            {% endfor %}
+        </ul></p>
+        <p>{{ entry.body_text }}</p>
+        <p><a href="{{ entry.id }}/">Update the blog post</a></p>
+        <p><a href="{{ entry.id }}/delete/">Delete the blog post</a></p>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>{% trans "No blog posts are available." %}</p>
+{% endif %}
+

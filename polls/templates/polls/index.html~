@@ -1,0 +1,23 @@
+{% load static %}<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" /> 
+	<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+    </head>
+    <body>
+	<h1>Polls</h1>
+	<img src="{% static 'polls/pics/skijump.gif' %}">
+	{% if latest_question_list %}
+	<ul>
+	    {% for question in latest_question_list %}
+	    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+	    {% endfor %}
+	</ul>
+	{% else %}
+	<p>No polls are available.</p>
+	{% endif %}
+    </body>
+</html>
+
+

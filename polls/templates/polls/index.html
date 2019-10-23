@@ -1,0 +1,49 @@
+{% load static %}<!doctype html>
+<html>
+    <head>
+	<title></title>
+	<meta charset="utf-8" /> 
+	<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+	<h1>Polls</h1>
+	<img src="{% static 'polls/pics/skijump.gif' %}">
+	{% if latest_question_list %}
+	<ul>
+	    {% for question in latest_question_list %}
+	    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+	    {% endfor %}
+	</ul>
+	{% else %}
+	<p>No polls are available.</p>
+	{% endif %}
+	<div id='json_reply'></div>
+	<script>
+	 function getLatestJSON() {
+	     $.getJSON("indexJSON", {}, function(data) {
+		 let s = "Nothing found";
+		 data = JSON.parse(data);
+		 //console.log("data:", data)
+		 if (data && data.length>0) {
+		     s = "<ul>";
+		     for(let question of data) {
+			 if ('fields' in question) {
+			     s += "<li>"+question['fields'].question_text;
+			 }
+		     }
+		     s += "</ul>";
+		 }
+		 $("#json_reply").html(s);
+		 console.log("get again");
+		 setTimeout(getLatestJSON, 5000);
+	     });
+	 }
+	 $(function() {
+	     getLatestJSON();
+	 });
+	</script>
+    </body>
+</html>
+
+

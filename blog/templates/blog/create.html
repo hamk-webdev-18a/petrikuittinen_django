@@ -1,0 +1,7 @@
+<h1>Create a Blog Post</h1>
+<form action="/blog/create/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create">
+</form>
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <title> </title>´
+        <script>
+        function search() {
+            var word = document.getElementById("word2").value;
+            $.getJSON("search", {word}, function(data) {
+                var s = "Nothing found";
+                data = JSON.parse(data);
+                if (data && data.length>0) {
+                    s = "<ul>";
+                    for(let d of data) {
+                        s += "<li>"+d;
+                    }
+                    s += "</ul>";
+                }
+                $("#json_reply").html(s); 
+            });
+        }
+        </script>
+    </head>
+    <body>
+    <h1>Search Words (normal synchronous)</h1>
+    <form action="" method="get">
+        <label for="word">Word:</label>
+        <input type="text" id="word" name="word" size="40" autofocus>
+        <input type="submit" value="Search">
+        <br>
+        <output>
+        {% if definitions %}
+        <ul>
+            {% for definition in definitions %}
+                <li>{{ definition }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>no definitions found.</p>
+        {% endif %}
+        </output>
+    </form>
+    <h1>Search Words (AJAX)</h1>
+    <form>
+        <label for="word2">Word:</label>
+        <input type="text" id="word2" name="word2" size="40">
+        <input type="button" value="Search" onclick="search()">
+        <br>
+        <output id="json_reply"></output>
+    </form>
+ 
+    <p></p><a href="addview">Add words to dictionary</a></p>
+    </body>
+</html>

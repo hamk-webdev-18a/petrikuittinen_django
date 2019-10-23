@@ -1,0 +1,41 @@
+{% load i18n %}
+{% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<h1>{{ question.question_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:vote' question.id %}" method="post">
+    {% csrf_token %}
+    {% for choice in question.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+    {% endfor %}
+    <input type="submit" value="Vote">
+    <input type="button" value='AJAX vote' id='ajaxbutton'>
+</form>
+<div id="ajaxreply"></div>
+<script>
+ $(function() {
+     $('#ajaxbutton').click(function() {
+	 let checked = $('input:checked');
+	 if (checked.length>0) {
+	     let value = checked[0].value;
+	     $.ajax({
+		 url: 'voteJSON/',
+		 data: {
+		     'choice': value,
+		     'csrfmiddlewaretoken': '{{ csrf_token }}'
+		 },
+		 type: 'POST',
+		 //dataType: 'json',
+		 success: function(data) {
+		     $("#ajaxreply").text("AJAX says: "+data.success);
+		 }
+	     });
+	 }
+     })
+ });
+</script>
+
